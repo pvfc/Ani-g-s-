@@ -15,6 +15,18 @@
       padding: 20px;
       text-align: center;
     }
+    .banner {
+      text-align: center;
+      padding: 10px;
+    }
+    .banner img {
+      width: 200px;
+      animation: mover 3s infinite alternate ease-in-out;
+    }
+    @keyframes mover {
+      from { transform: translateX(-20px); }
+      to { transform: translateX(20px); }
+    }
     .container {
       max-width: 800px;
       margin: 20px auto;
@@ -25,13 +37,6 @@
     }
     h2 {
       color: #0a7c4a;
-    }
-    .produto {
-      display: flex;
-      justify-content: space-between;
-      margin: 10px 0;
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
     }
     input, textarea, select {
       width: 100%;
@@ -58,7 +63,10 @@
 <body><header>
   <h1>Liquigás Cutias</h1>
   <p>Peça seu gás com entrega rápida 🚀</p>
-</header><div class="container">
+</header><div class="banner">
+  <!-- Troque o link abaixo por uma imagem 3D que você quiser -->
+  <img src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png" alt="Entregador">
+</div><div class="container">
   <h2>Escolha seu gás</h2><label>Tipo de gás:</label> <select id="produto"> <option value="13kg - R$155">Gás 13kg - R$155</option> <option value="8kg - R$125">Gás 8kg - R$125</option> </select>
 
 <label>Quantidade:</label> <input type="number" id="quantidade" value="1" min="1">
@@ -92,7 +100,7 @@ function enviarPedido() {
                  `Endereço: ${rua}, ${bairro}, ${cidade}%0A` +
                  `Obs: ${obs}`;
 
-  let telefone = '5596984278983'; // coloque seu número com DDD
+  let telefone = '5596984278983';
 
   let url = `https://wa.me/${telefone}?text=${mensagem}`;
 
