@@ -777,7 +777,7 @@
     <a href="#regioes">Regiões</a>
     <a href="#depoimentos">Avaliações</a>
   </nav>
-  <a href="https://wa.me/554199999999" class="btn-header" target="_blank">📲 Fazer Pedido</a>
+  <a href="https://wa.me/5541995060218" class="btn-header" target="_blank">📲 Fazer Pedido</a>
 </header>
 
 <!-- HERO -->
@@ -791,7 +791,7 @@
       Entrega rápida de botijão de gás em toda Curitiba e região metropolitana. Atendemos 24h nos finais de semana. Preço justo, qualidade garantida.
     </p>
     <div class="hero-ctas">
-      <a href="https://wa.me/554199999999" class="btn-primary" target="_blank">
+      <a href="https://wa.me/5541995060218" class="btn-primary" target="_blank">
         💬 Pedir pelo WhatsApp
       </a>
       <a href="tel:+554133333333" class="btn-outline">
@@ -834,36 +834,22 @@
       <div class="product-name">Botijão P13</div>
       <div class="product-weight">13 kg – GLP</div>
       <p class="product-desc">O botijão mais popular do Brasil. Ideal para uso doméstico, fogão e forno. Dura em média 30 dias para uma família de 4 pessoas.</p>
-      <div class="product-price"><sup>R$</sup>109<span class="cents">,90</span></div>
-      <a href="https://wa.me/554199999999?text=Olá! Quero pedir um Botijão P13" class="btn-pedido" target="_blank">Pedir Agora →</a>
+      <div class="product-price"><sup>R$</sup>155<span class="cents">,00</span></div>
+      <a href="https://wa.me/5541995060218?text=Olá! Quero pedir um Botijão P13" class="btn-pedido" target="_blank">Pedir Agora →</a>
     </div>
 
     <div class="product-card featured">
       <div class="featured-tag">🔥 Mais Vendido</div>
       <span class="product-icon">🔴</span>
       <div class="product-name">Botijão P45</div>
-      <div class="product-weight">45 kg – GLP</div>
-      <p class="product-desc">Perfeito para restaurantes, padarias, condomínios e uso intenso. Economia e praticidade com menos trocas.</p>
-      <div class="product-price"><sup>R$</sup>299<span class="cents">,90</span></div>
-      <a href="https://wa.me/554199999999?text=Olá! Quero pedir um Botijão P45" class="btn-pedido" target="_blank">Pedir Agora →</a>
-    </div>
-
-    <div class="product-card">
-      <span class="product-icon">⚪</span>
-      <div class="product-name">Botijão P20</div>
-      <div class="product-weight">20 kg – GLP</div>
-      <p class="product-desc">Ótima opção intermediária para famílias grandes ou pequenos comércios. Mais autonomia, menos trocas.</p>
-      <div class="product-price"><sup>R$</sup>159<span class="cents">,90</span></div>
-      <a href="https://wa.me/554199999999?text=Olá! Quero pedir um Botijão P20" class="btn-pedido" target="_blank">Pedir Agora →</a>
-    </div>
 
     <div class="product-card">
       <span class="product-icon">🟠</span>
       <div class="product-name">Botijão P8</div>
       <div class="product-weight">8 kg – GLP</div>
       <p class="product-desc">Compacto e prático para apartamentos, solteiros ou uso de acampamento. Fácil de manusear e transportar.</p>
-      <div class="product-price"><sup>R$</sup>79<span class="cents">,90</span></div>
-      <a href="https://wa.me/554199999999?text=Olá! Quero pedir um Botijão P8" class="btn-pedido" target="_blank">Pedir Agora →</a>
+      <div class="product-price"><sup>R$</sup>125<span class="cents">,00</span></div>
+      <a href="https://wa.me/5541995060218?text=Olá! Quero pedir um Botijão P8" class="btn-pedido" target="_blank">Pedir Agora →</a>
     </div>
 
   </div>
