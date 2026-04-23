@@ -835,7 +835,7 @@
       <div class="product-weight">13 kg – GLP</div>
       <p class="product-desc">O botijão mais popular do Brasil. Ideal para uso doméstico, fogão e forno. Dura em média 30 dias para uma família de 4 pessoas.</p>
       <div class="product-price"><sup>R$</sup>155<span class="cents">,00</span></div>
-      <a href="https://wa.me/5541995060218?text=Olá! Quero pedir um Botijão P13" class="btn-pedido" target="_blank">Pedir Agora →</a>
+      <a href="https://wa.me/5541995060218text=Olá! Quero pedir um Botijão P13" class="btn-pedido" target="_blank">Pedir Agora →</a>
     </div>
 
     <div class="product-card featured">
@@ -1038,7 +1038,7 @@
 </footer>
 
 <!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/554199999999?text=Olá! Quero pedir gás." class="float-wpp" target="_blank" title="Fale pelo WhatsApp">💬</a>
+<a href="https://wa.me/5541995060218text=Olá! Quero pedir gás." class="float-wpp" target="_blank" title="Fale pelo WhatsApp">💬</a>
 
 </body>
 </html>
