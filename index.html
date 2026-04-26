@@ -357,6 +357,19 @@
     gap: 10px;
   }
 
+  .pag-divisor {
+    grid-column: 1 / -1;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #aaa;
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 2px;
+    font-weight: 700;
+  }
+
   .pag-btn {
     padding: 13px 10px;
     border: 2px solid #e0e0e0;
@@ -479,6 +492,7 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
   .gas-img {
   width: 200px;
   height: auto;
@@ -533,21 +547,23 @@
     <div class="produto-card" id="card13" onclick="selecionarProduto('13kg')">
   <div class="check-badge" id="check13">✓</div>
 
-  <img src="imagem/download (2).jpeg" alt="Botijão 13kg" class="gas-img">
+  <img src=" imagem/download (2).jpeg" alt="Botijão 13kg" class="gas-img">
 
   <div class="produto-nome">Botijão 13kg</div>
   <div class="produto-desc">Gás de cozinha padrão</div>
   <div class="produto-preco">R$ 155<small>/un</small></div>
 </div>
+
     <!-- 8kg -->
-    <div class="produto-card" id="card8" onclick="selecionarProduto('8kg')">
-      <div class="check-badge" id="check8">✓</div>
-      <img src=" imagem/download.jpeg  " alt="Botijão 8kg" class="gas-img">
-      <div class="produto-nome">Botijão 8kg</div>
-      <div class="produto-desc">Tamanho compacto</div>
-      <div class="produto-preco">R$ 125<small>/un</small></div>
-    </div>
-  </div>
+   <div class="produto-card" id="card8" onclick="selecionarProduto('8kg')">
+  <div class="check-badge" id="check8">✓</div>
+
+  <img src=" imagem/download.jpeg" alt="Botijão 8kg" class="gas-img">
+
+  <div class="produto-nome">Botijão 8kg</div>
+  <div class="produto-desc">Gás de cozinha padrão</div>
+  <div class="produto-preco">R$ 155<small>/un</small></div>
+</div>
 
   <!-- QUANTIDADE -->
   <div class="form-card" style="display:none;" id="qtd-section">
@@ -597,6 +613,13 @@
       </button>
       <button class="pag-btn" id="pag-dinheiro" onclick="selecionarPag('dinheiro')">
         💵 Dinheiro
+      </button>
+      <div class="pag-divisor">Cartão na entrega</div>
+      <button class="pag-btn" id="pag-credito" onclick="selecionarPag('credito')">
+        💳 Crédito
+      </button>
+      <button class="pag-btn" id="pag-debito" onclick="selecionarPag('debito')">
+        💳 Débito
       </button>
     </div>
     <div id="troco-group" style="display:none; margin-top:14px;">
@@ -674,8 +697,9 @@
 
   function selecionarPag(tipo) {
     pagamento = tipo;
-    document.getElementById('pag-pix').classList.remove('ativo');
-    document.getElementById('pag-dinheiro').classList.remove('ativo');
+    ['pix','dinheiro','credito','debito'].forEach(p =>
+      document.getElementById('pag-' + p).classList.remove('ativo')
+    );
     document.getElementById('pag-' + tipo).classList.add('ativo');
     document.getElementById('troco-group').style.display = tipo === 'dinheiro' ? 'block' : 'none';
     atualizarResumo();
@@ -708,7 +732,8 @@
     if (!pagamento) { alert('Por favor, selecione a forma de pagamento!'); return; }
 
     const total = precos[produtoSelecionado] * qtd;
-    const pagLabel = pagamento === 'pix' ? 'Pix' : 'Dinheiro' + (troco ? ` (troco p/ R$ ${troco})` : '');
+    const pagMap = { pix: 'Pix', dinheiro: 'Dinheiro', credito: 'Cartão de Crédito', debito: 'Cartão de Débito' };
+    const pagLabel = pagMap[pagamento] + (pagamento === 'dinheiro' && troco ? ` (troco p/ R$ ${troco})` : '');
 
     let msg = `*NOVO PEDIDO – Liquigás Cutias*\n\n`;
     msg += `👤 *Nome:* ${nome}\n`;
