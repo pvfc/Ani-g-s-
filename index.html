@@ -710,7 +710,7 @@
     const total = precos[produtoSelecionado] * qtd;
     const pagLabel = pagamento === 'pix' ? 'Pix' : 'Dinheiro' + (troco ? ` (troco p/ R$ ${troco})` : '');
 
-    let msg = `    *NOVO PEDIDO – Liquigás Cutias*\n\n`;
+    let msg = `*NOVO PEDIDO – Liquigás Cutias*\n\n`;
     msg += `👤 *Nome:* ${nome}\n`;
     if (telefone) msg += `📱 *Telefone:* ${telefone}\n`;
     msg += `\n📦 *Produto:* ${nomes[produtoSelecionado]}\n`;
