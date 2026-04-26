@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liquigás Cutias – Gás na sua porta</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #1a7a3c;
+    --verde-escuro: #0f5229;
+    --laranja: #f7941d;
+    --laranja-escuro: #d97a10;
+    --preto: #111;
+    --branco: #fff;
+    --cinza-claro: #f5f5f5;
+    --sombra: 0 8px 32px rgba(0,0,0,0.13);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #f0f4f0;
+    min-height: 100vh;
+    color: var(--preto);
+  }
+
+  /* HEADER */
+  header {
+    background: var(--verde-escuro);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  }
+
+  .header-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-flame {
+    width: 44px;
+    height: 44px;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .logo-text span:first-child {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 26px;
+    color: var(--branco);
+    letter-spacing: 1px;
+  }
+
+  .logo-text span:last-child {
+    font-size: 13px;
+    color: var(--laranja);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .header-tel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .header-tel small {
+    color: rgba(255,255,255,0.6);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .header-tel a {
+    color: var(--laranja);
+    font-weight: 900;
+    font-size: 16px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--verde) 0%, var(--verde-escuro) 60%, #07361a 100%);
+    padding: 40px 20px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: var(--laranja);
+    border-radius: 50%;
+    opacity: 0.12;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 260px; height: 260px;
+    background: var(--laranja);
+    border-radius: 50%;
+    opacity: 0.08;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 42px;
+    color: var(--branco);
+    letter-spacing: 2px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .hero h1 span {
+    color: var(--laranja);
+  }
+
+  .hero p {
+    color: rgba(255,255,255,0.82);
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+  }
+
+  .delivery-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--laranja);
+    color: #fff;
+    font-weight: 900;
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-top: 14px;
+    position: relative;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(247,148,29,0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(247,148,29,0); }
+  }
+
+  /* PRODUTOS */
+  .section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 28px;
+    color: var(--verde-escuro);
+    letter-spacing: 1.5px;
+    margin: 30px 0 14px;
+    border-left: 5px solid var(--laranja);
+    padding-left: 12px;
+  }
+
+  .produtos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+
+  .produto-card {
+    background: var(--branco);
+    border-radius: 18px;
+    padding: 20px 16px;
+    text-align: center;
+    box-shadow: var(--sombra);
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .produto-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--verde), var(--laranja));
+  }
+
+  .produto-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.16);
+  }
+
+  .produto-card.selecionado {
+    border-color: var(--laranja);
+    background: #fff9f0;
+  }
+
+  .produto-card.selecionado .check-badge {
+    display: flex;
+  }
+
+  .check-badge {
+    display: none;
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 24px; height: 24px;
+    background: var(--laranja);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 13px;
+  }
+
+  .gas-icon {
+    font-size: 50px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .produto-nome {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px;
+    color: var(--verde-escuro);
+    letter-spacing: 1px;
+  }
+
+  .produto-desc {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  .produto-preco {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--laranja-escuro);
+  }
+
+  .produto-preco small {
+    font-size: 13px;
+    font-weight: 600;
+    color: #999;
+  }
+
+  /* QUANTIDADE */
+  .qtd-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 10px;
+  }
+
+  .qtd-btn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--verde);
+    background: var(--branco);
+    color: var(--verde-escuro);
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, color 0.15s;
+    line-height: 1;
+  }
+
+  .qtd-btn:hover { background: var(--verde); color: #fff; }
+
+  .qtd-num {
+    font-size: 22px;
+    font-weight: 900;
+    min-width: 30px;
+    text-align: center;
+    color: var(--preto);
+  }
+
+  /* FORMULÁRIO */
+  .form-card {
+    background: var(--branco);
+    border-radius: 20px;
+    padding: 24px 20px;
+    box-shadow: var(--sombra);
+    margin-bottom: 14px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--verde-escuro);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 13px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: 'Nunito', sans-serif;
+    color: var(--preto);
+    background: #fafafa;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--verde);
+    background: #fff;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  /* PAGAMENTO */
+  .pagamento-opcoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .pag-btn {
+    padding: 13px 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background: #fafafa;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transition: all 0.15s;
+  }
+
+  .pag-btn:hover { border-color: var(--verde); color: var(--verde-escuro); }
+  .pag-btn.ativo {
+    border-color: var(--laranja);
+    background: #fff9f0;
+    color: var(--laranja-escuro);
+  }
+
+  /* RESUMO */
+  .resumo-card {
+    background: linear-gradient(135deg, var(--verde-escuro), var(--verde));
+    border-radius: 20px;
+    padding: 22px 20px;
+    color: #fff;
+    margin-bottom: 14px;
+    box-shadow: 0 8px 28px rgba(26,122,60,0.35);
+  }
+
+  .resumo-titulo {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    opacity: 0.85;
+  }
+
+  .resumo-linha {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .resumo-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    font-weight: 900;
+    padding-top: 12px;
+    color: var(--laranja);
+  }
+
+  /* BOTÃO WHATSAPP */
+  .btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 18px;
+    background: #25d366;
+    color: #fff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    margin-bottom: 30px;
+  }
+
+  .btn-whatsapp:hover {
+    background: #1ebe5a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(37,211,102,0.5);
+  }
+
+  .btn-whatsapp svg {
+    width: 28px; height: 28px; flex-shrink: 0;
+  }
+
+  /* AVISO */
+  .aviso {
+    background: #fff8e1;
+    border: 2px solid #ffe082;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #7a5800;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--verde-escuro);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    font-size: 12px;
+    padding: 18px 20px;
+    letter-spacing: 0.5px;
+  }
+
+  footer strong { color: var(--laranja); }
+
+  /* ANIMAÇÃO ENTRADA */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .gas-img {
+  width: 280px;
+  height: auto;
+  margin: 10px 0;
+}
+
+  .hero, .section { animation: fadeUp 0.5s ease both; }
+  .section { animation-delay: 0.1s; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-area">
+      <svg class="logo-flame" viewBox="0 0 44 44" fill="none">
+        <ellipse cx="22" cy="38" rx="14" ry="4" fill="rgba(255,255,255,0.1)"/>
+        <path d="M22 4 C14 14 10 20 14 26 C16 30 20 32 22 32 C24 32 28 30 30 26 C34 20 30 14 22 4Z" fill="#f7941d"/>
+        <path d="M22 10 C18 17 17 21 19 25 C20 27 21 28 22 28 C23 28 24 27 25 25 C27 21 26 17 22 10Z" fill="#fff"/>
+        <path d="M20 22 C19 24 20 26 22 26 C24 26 25 24 24 22 C23 21 21 21 20 22Z" fill="#1a7a3c"/>
+      </svg>
+      <div class="logo-text">
+        <span>Liquigás</span>
+        <span>Cutias</span>
+      </div>
+    </div>
+    <div class="header-tel">
+      <small>Falar com Ani</small>
+      <a href="tel:96984278983">96 98427-8983</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Gás na sua porta<br><span>rápido e fácil</span></h1>
+  <p>Faça seu pedido online e receba em casa</p>
+  <div class="delivery-badge">
+    🏍️ Fazemos entrega!
+  </div>
+</div>
+
+<!-- CONTEÚDO -->
+<div class="section">
+
+  <!-- PRODUTOS -->
+  <p class="section-title">Escolha o produto</p>
+
+  <div class="produtos-grid">
+    <!-- 13kg -->
+    <div class="produto-card" id="card13" onclick="selecionarProduto('13kg')">
+  <div class="check-badge" id="check13">✓</div>
+
+  <img src="imagem/download (2).jpeg" alt="Botijão 13kg" class="gas-img">
+
+  <div class="produto-nome">Botijão 13kg</div>
+  <div class="produto-desc">Gás de cozinha padrão</div>
+  <div class="produto-preco">R$ 155<small>/un</small></div>
+</div>
+    <!-- 8kg -->
+    <div class="produto-card" id="card8" onclick="selecionarProduto('8kg')">
+      <div class="check-badge" id="check8">✓</div>
+      <img src=" imagem/download.jpeg  " alt="Botijão 8kg" class="gas-img">
+      <div class="produto-nome">Botijão 8kg</div>
+      <div class="produto-desc">Tamanho compacto</div>
+      <div class="produto-preco">R$ 125<small>/un</small></div>
+    </div>
+  </div>
+
+  <!-- QUANTIDADE -->
+  <div class="form-card" style="display:none;" id="qtd-section">
+    <label>Quantidade</label>
+    <div class="qtd-row">
+      <button class="qtd-btn" onclick="alterarQtd(-1)">−</button>
+      <span class="qtd-num" id="qtd-display">1</span>
+      <button class="qtd-btn" onclick="alterarQtd(1)">+</button>
+    </div>
+  </div>
+
+  <!-- ENDEREÇO -->
+  <p class="section-title">Seu endereço</p>
+  <div class="form-card">
+    <div class="form-group">
+      <label>Nome completo</label>
+      <input type="text" id="nome" placeholder="Seu nome" />
+    </div>
+    <div class="form-group">
+      <label>Rua / Avenida</label>
+      <input type="text" id="rua" placeholder="Ex: Rua das Flores, 123" />
+    </div>
+    <div class="form-group">
+      <label>Bairro</label>
+      <input type="text" id="bairro" placeholder="Seu bairro" />
+    </div>
+    <div class="form-group">
+      <label>Ponto de referência</label>
+      <input type="text" id="referencia" placeholder="Próximo a... / Em frente ao..." />
+    </div>
+    <div class="form-group">
+      <label>Telefone / WhatsApp</label>
+      <input type="tel" id="telefone" placeholder="(96) 99999-9999" />
+    </div>
+    <div class="form-group">
+      <label>Observações (opcional)</label>
+      <textarea id="obs" placeholder="Alguma observação para a entrega?"></textarea>
+    </div>
+  </div>
+
+  <!-- PAGAMENTO -->
+  <p class="section-title">Forma de pagamento</p>
+  <div class="form-card">
+    <div class="pagamento-opcoes">
+      <button class="pag-btn" id="pag-pix" onclick="selecionarPag('pix')">
+        💳 Pix
+      </button>
+      <button class="pag-btn" id="pag-dinheiro" onclick="selecionarPag('dinheiro')">
+        💵 Dinheiro
+      </button>
+    </div>
+    <div id="troco-group" style="display:none; margin-top:14px;">
+      <label>Troco para quanto?</label>
+      <input type="number" id="troco" placeholder="Ex: 200" min="0" />
+    </div>
+  </div>
+
+  <!-- RESUMO -->
+  <div class="resumo-card" id="resumo" style="display:none;">
+    <div class="resumo-titulo">📋 Resumo do Pedido</div>
+    <div class="resumo-linha">
+      <span id="r-produto">–</span>
+      <span id="r-qtd">–</span>
+    </div>
+    <div class="resumo-linha">
+      <span>Entrega</span>
+      <span>Grátis 🎉</span>
+    </div>
+    <div class="resumo-total">
+      <span>Total</span>
+      <span id="r-total">–</span>
+    </div>
+  </div>
+
+  <!-- AVISO -->
+  <div class="aviso">
+    ⚠️ Ao clicar em "Enviar Pedido", você será redirecionado para o WhatsApp com todos os detalhes preenchidos automaticamente.
+  </div>
+
+  <!-- BOTÃO WHATSAPP -->
+  <a class="btn-whatsapp" id="btn-wpp" href="#" onclick="enviarWhatsApp(event)">
+    <svg viewBox="0 0 32 32" fill="none"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.67 4.783 1.836 6.77L2 30l7.45-1.81A13.93 13.93 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="#fff"/><path d="M22.9 19.6c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.78-1.67-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z" fill="#25d366"/></svg>
+    Enviar Pedido pelo WhatsApp
+  </a>
+
+</div>
+
+<footer>
+  Liquigás Cutias &nbsp;|&nbsp; <strong>Falar com Ani: 96 98427-8983</strong><br>
+  Aceitamos Pix e dinheiro em espécie &nbsp;•&nbsp; Entregamos na sua porta
+</footer>
+
+<script>
+  let produtoSelecionado = null;
+  let qtd = 1;
+  let pagamento = null;
+  const precos = { '13kg': 155, '8kg': 125 };
+  const nomes = { '13kg': 'Botijão 13kg', '8kg': 'Botijão 8kg' };
+
+  function selecionarProduto(prod) {
+    produtoSelecionado = prod;
+    document.getElementById('card13').classList.remove('selecionado');
+    document.getElementById('card8').classList.remove('selecionado');
+    document.getElementById('check13').style.display = 'none';
+    document.getElementById('check8').style.display = 'none';
+
+    if (prod === '13kg') {
+      document.getElementById('card13').classList.add('selecionado');
+      document.getElementById('check13').style.display = 'flex';
+    } else {
+      document.getElementById('card8').classList.add('selecionado');
+      document.getElementById('check8').style.display = 'flex';
+    }
+
+    document.getElementById('qtd-section').style.display = 'block';
+    atualizarResumo();
+  }
+
+  function alterarQtd(delta) {
+    qtd = Math.max(1, qtd + delta);
+    document.getElementById('qtd-display').textContent = qtd;
+    atualizarResumo();
+  }
+
+  function selecionarPag(tipo) {
+    pagamento = tipo;
+    document.getElementById('pag-pix').classList.remove('ativo');
+    document.getElementById('pag-dinheiro').classList.remove('ativo');
+    document.getElementById('pag-' + tipo).classList.add('ativo');
+    document.getElementById('troco-group').style.display = tipo === 'dinheiro' ? 'block' : 'none';
+    atualizarResumo();
+  }
+
+  function atualizarResumo() {
+    if (!produtoSelecionado) return;
+    const total = precos[produtoSelecionado] * qtd;
+    document.getElementById('resumo').style.display = 'block';
+    document.getElementById('r-produto').textContent = nomes[produtoSelecionado];
+    document.getElementById('r-qtd').textContent = qtd + 'x R$ ' + precos[produtoSelecionado];
+    document.getElementById('r-total').textContent = 'R$ ' + total;
+  }
+
+  function enviarWhatsApp(e) {
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const rua = document.getElementById('rua').value.trim();
+    const bairro = document.getElementById('bairro').value.trim();
+    const referencia = document.getElementById('referencia').value.trim();
+    const telefone = document.getElementById('telefone').value.trim();
+    const obs = document.getElementById('obs').value.trim();
+    const troco = document.getElementById('troco').value.trim();
+
+    if (!produtoSelecionado) { alert('Por favor, selecione um produto!'); return; }
+    if (!nome) { alert('Por favor, informe seu nome!'); return; }
+    if (!rua) { alert('Por favor, informe o endereço!'); return; }
+    if (!bairro) { alert('Por favor, informe o bairro!'); return; }
+    if (!pagamento) { alert('Por favor, selecione a forma de pagamento!'); return; }
+
+    const total = precos[produtoSelecionado] * qtd;
+    const pagLabel = pagamento === 'pix' ? 'Pix' : 'Dinheiro' + (troco ? ` (troco p/ R$ ${troco})` : '');
+
+    let msg = `🛒 *NOVO PEDIDO – Liquigás Cutias*\n\n`;
+    msg += `👤 *Nome:* ${nome}\n`;
+    if (telefone) msg += `📱 *Telefone:* ${telefone}\n`;
+    msg += `\n📦 *Produto:* ${nomes[produtoSelecionado]}\n`;
+    msg += `🔢 *Quantidade:* ${qtd} unidade(s)\n`;
+    msg += `💰 *Total:* R$ ${total}\n`;
+    msg += `\n📍 *Endereço de entrega:*\n`;
+    msg += `${rua}\n`;
+    msg += `Bairro: ${bairro}\n`;
+    if (referencia) msg += `Referência: ${referencia}\n`;
+    msg += `\n💳 *Pagamento:* ${pagLabel}\n`;
+    if (obs) msg += `\n📝 *Obs:* ${obs}\n`;
+    msg += `\n✅ Pedido feito pelo site!`;
+
+    const numero = '5596984278983';
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  }
+</script>
+</body>
+</html>
